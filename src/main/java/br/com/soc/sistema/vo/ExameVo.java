@@ -1,21 +1,21 @@
 package br.com.soc.sistema.vo;
 
 public class ExameVo {
-	private String rowid;
-	private String nome;	
+	private String cdExame;
+	private String nome;
 	
 	public ExameVo() {}
 		
-	public ExameVo(String rowid, String nome) {
-		this.rowid = rowid;
+	public ExameVo(String cdExame, String nome) {
+		this.cdExame = cdExame;
 		this.nome = nome;
 	}
 
-	public String getRowid() {
-		return rowid;
+	public String getCdExame() {
+		return cdExame;
 	}
-	public void setRowid(String rowid) {
-		this.rowid = rowid;
+	public void setCdExame(String cdExame) {
+		this.cdExame = cdExame;
 	}
 	public String getNome() {
 		return nome;
@@ -26,6 +26,6 @@ public class ExameVo {
 	
 	@Override
 	public String toString() {
-		return "ExameVo [rowid=" + rowid + ", nome=" + nome + "]";
+		return "ExameVo [cdExame=" + cdExame + ", nome=" + nome + "]";
 	}
 }

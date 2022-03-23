@@ -27,11 +27,31 @@ public class ExameBusiness {
 				throw new IllegalArgumentException("Nome nao pode ser em branco");
 			
 			dao.insertExame(exameVo);
-		} catch (Exception e) {
+		}catch(Exception e) {
 			throw new BusinessException("Nao foi possivel realizar a inclusao do registro");
 		}
 		
-	}	
+	}
+	
+	public void excluirExame(String codigo) {
+		try {
+			Integer cod = Integer.parseInt(codigo);
+			dao.excluirExame(cod);
+		}catch (NumberFormatException e){
+			throw new BusinessException(FOI_INFORMADO_CARACTER_NO_LUGAR_DE_UM_NUMERO);
+		}
+	}
+	
+	public void editarExame(ExameVo exameVo) {
+		try {
+			if(exameVo.getNome().isEmpty())
+				throw new IllegalArgumentException("Nome nao pode ser em branco");
+			
+			dao.editarExame(exameVo);
+		}catch(Exception e) {
+			throw new BusinessException("Nao foi possivel editar o exame");
+		}
+	}
 	
 	public List<ExameVo> filtrarExames(ExameFilter filter){
 		List<ExameVo> exames = new ArrayList<>();
@@ -62,4 +82,5 @@ public class ExameBusiness {
 			throw new BusinessException(FOI_INFORMADO_CARACTER_NO_LUGAR_DE_UM_NUMERO);
 		}
 	}
+	
 }

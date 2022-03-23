@@ -11,6 +11,10 @@ import br.com.soc.sistema.infra.OpcoesComboBuscarExames;
 import br.com.soc.sistema.vo.ExameVo;
 
 public class ExameAction extends Action {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private List<ExameVo> exames = new ArrayList<>();
 	private ExameBusiness business = new ExameBusiness();
 	private ExameFilter filtrar = new ExameFilter();
@@ -40,13 +44,22 @@ public class ExameAction extends Action {
 		return REDIRECT;
 	}
 	
+	public String excluir() {
+		business.excluirExame(exameVo.getCdExame());
+		
+		return REDIRECT;
+	}
+	
 	public String editar() {
-		if(exameVo.getRowid() == null)
+		if(exameVo.getNome() == null) {
+			exameVo = business.buscarExamePor(exameVo.getCdExame());
+			return EDIT;
+		}
+		else
+		{
+			business.editarExame(exameVo);
 			return REDIRECT;
-		
-		exameVo = business.buscarExamePor(exameVo.getRowid());
-		
-		return INPUT;
+		}
 	}
 	
 	public List<OpcoesComboBuscarExames> getListaOpcoesCombo(){
