@@ -1,24 +1,24 @@
 package br.com.soc.sistema.soap;
 
+import br.com.soc.sistema.vo.FuncionarioVo;
+
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.Style;
 
-import br.com.soc.sistema.vo.FuncionarioVo;
-
 @WebService
 @SOAPBinding(style = Style.RPC)
 public interface WebServiceFuncionarios {
-	@WebMethod
-	public void inserirFuncionario(FuncionarioVo funcionarioVo);
+    @WebMethod
+    void inserirFuncionario(FuncionarioVo funcionarioVo);
 
-	@WebMethod
-	public void excluirFuncionario(String codigo);
-	
-	@WebMethod
-	public void editarFuncionario(FuncionarioVo funcionarioVo);
-	
-	@WebMethod
-	public String buscarFuncionario(String codigo);
+    @WebMethod
+    void excluirFuncionario(String codigo);
+
+    @WebMethod
+    void editarFuncionario(FuncionarioVo funcionarioVo);
+
+    @WebMethod
+    String buscarFuncionario(String codigo);
 }
